@@ -27,6 +27,7 @@ def _enforce_citations_or_flag(text: str) -> str:
     has_ref_re = re.compile(r"\(see note \[\d+\]\)", re.IGNORECASE)
 
     for line in text.splitlines():
+        line = re.sub(r"\(needs citation\)", "(Not found in sources.)", line, flags=re.IGNORECASE)
         if bullet_re.match(line):
             low = line.lower()
             if (not has_ref_re.search(line)) and ("not found in sources" not in low) and ("needs citation" not in low):

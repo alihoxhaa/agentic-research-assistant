@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import shutil
 from pathlib import Path
 from typing import List
@@ -57,7 +58,12 @@ def build_vectorstore(reset: bool = True) -> Chroma:
     return vectorstore
 
 
-def query_vectorstore(query: str, k: int = 5) -> List[Document]:
+def query_vectorstore(query: str, k: int = 6) -> List[Document]:
+    # Auto-build DB on Streamlit Cloud (fresh environment)
+    if not os.path.exists(DB_DIR) or not os.path.exists(os.path.join(DB_DIR, "chroma.sqlite3")):
+        from tools.ingest import ingest_docs  # local import avoids circular import issues
+        ingest_docs(reset=False)
+    
     embeddings = OpenAIEmbeddings()
     vectorstore = Chroma(
         collection_name=COLLECTION,
