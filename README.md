@@ -71,8 +71,9 @@ This project includes multiple optional enhancements beyond the baseline:
 - **Prompt injection defense** (treat doc text as untrusted + filtering step)
 - **Evaluation set** with automated PASS/FAIL checks (`eval/run_eval.py`)
 - **Multi-output mode** (deliverable package: summary + email + action items)
-- **Quality stabilization loop** (single retry based on Verifier FIX_INSTRUCTIONS)
-- **Traceability** (agent trace + citations)
+
+  - **Quality stabilization loop** (single retry based on Verifier FIX_INSTRUCTIONS)
+  - **Traceability** (agent trace + citations)
 
 ---
 
@@ -111,11 +112,11 @@ This project includes multiple optional enhancements beyond the baseline:
 ```bash
 streamlit run app/streamlit_app.py
 ```
-
+---
 ## Deployment
 
 following the setup, app is meant to deploy locally
-or through link: 
+or through link: https://agentic-research-assistant-alihoxha.streamlit.app/
 
 ## App tip
 on the sidebar you can find 5 demos corresponding to the example tasks
